@@ -54,14 +54,17 @@ if attributes[:team_name] == team_name
   return attributes[:colors].map
 end
 end
+end
 
 
 def team_names
-game_hash.map do | location |
+game_hash.map do | location, team |
+    binding.pry
   return location[:team_name]
+
 end
 end
-end
+team_names
 
 
 # def player_numbers(team_name)
