@@ -166,7 +166,6 @@ end
 return  true if player_most_steals == player_with_longest_name
 end
 
-
 # returns true if player with longest name also is player who steals the most
 # compares value of method longest_length to method that extracts player with most steals
 # conditional
