@@ -104,7 +104,7 @@ end
 def most_points_scored
   most_points = 0
   super_star = ' '
-  
+
   game_hash.each do | location, team_data |
     team_data[:players].each do | player |
       points = player[:points]
@@ -158,15 +158,7 @@ player_most_steals = ' '
 game_hash.each do | location, team_data |
   team_data[:players].each do | player |
 player_most_steals, most_steals = player[:name], player[:steals] if player[:steals] > most_steals
-# binding.pry
 end
 end
-# Correctly returns number of steals for Bismack
 return  true if player_most_steals == player_with_longest_name
 end
-
-# returns true if player with longest name also is player who steals the most
-# compares value of method longest_length to method that extracts player with most steals
-# conditional
-# boolean return
-#
