@@ -161,7 +161,6 @@ player_most_steals, most_steals = player[:name], player[:steals] if player[:stea
 # binding.pry
 end
 end
-steals
 # Correctly returns number of steals for Bismack
 return  true if player_most_steals == player_with_longest_name
 end
