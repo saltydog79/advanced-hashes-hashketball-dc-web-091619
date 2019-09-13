@@ -158,8 +158,7 @@ steals = ' '
 
 game_hash.each do | location, team_data |
   team_data[:players].each do | player |
-    player_steals = player[:steals]
-steals, most_steals = player[:steals], player_steals if player_steals > most_steals
+steals, most_steals = player[:steals], player[:player_name] if player[:steals] > most_steals
 end
 end
 steals
