@@ -104,8 +104,7 @@ end
 def most_points_scored
   most_points = 0
   super_star = ' '
-# set up empty var for top-scoring player
-# set up var for
+  
   game_hash.each do | location, team_data |
     team_data[:players].each do | player |
       points = player[:points]
