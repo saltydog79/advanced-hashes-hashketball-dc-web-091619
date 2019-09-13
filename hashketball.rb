@@ -59,14 +59,117 @@ end
 
 def team_names
 game_hash.map do | location, team |
-    binding.pry
-  return location[:team_name]
-
+ team[:team_name]
 end
 end
-team_names
 
 
-# def player_numbers(team_name)
-# game_hash.extract!(:team_name, :numbers)
-# end
+def player_numbers(team_name)
+game_hash.each do | location, team_data |
+    if team_data[:team_name] == team_name
+      return team_data[:players].map do | player | player[:number]
+        end
+      end
+    end
+end
+
+def player_stats(player_name)
+game_hash.each do | location, team_data |
+  team_data[:players].each do | player |
+  if player[:name] == player_name
+    return player.tap { | person | person.delete(:name) }
+      end
+    end
+  end
+end
+
+
+def big_shoe_rebounds
+  shoe_size = 0
+  rebounds = 0
+
+  game_hash.each do | location, team_data |
+    team_data[:players].each do | stats |
+      if stats[:shoe] > shoe_size
+        shoe_size = stats[:shoe]
+        rebounds = stats[:rebounds]
+      end
+    end
+  end
+  rebounds
+end
+
+########## BONUS############
+
+def most_points_scored
+  most_points = 0
+  super_star = ' '
+
+  game_hash.each do | location, team_data |
+    team_data[:players].each do | player |
+      points = player[:points]
+      if points > most_points
+        most_points = points
+        super_star = player[:name]
+      end
+    end
+  end
+  super_star
+end
+
+
+def winning_team
+  total_points = 0
+  top_team = ' '
+
+  game_hash.each do | location, team_data |
+    team_points = 0
+    team_name = game_hash[location][:team_name]
+    team_data[:players].each do | player |
+      points = player[:points]
+      team_points += points
+    end
+    top_team, total_points = team_name, team_points if team_points > total_points
+  end
+  return top_team
+end
+
+
+def player_with_longest_name
+  longest = ' '
+  longest_length = 0
+  game_hash.each do | location, team_data |
+    team_data[:players].each do | player |
+      name_length = player[:name].length
+      longest, longest_length = player[:name], name_length if name_length > longest_length
+    end
+  end
+  return longest
+end
+
+
+#############SUPER_BONUS################
+
+def long_name_steals_a_ton?
+longest_name = player_with_longest_name
+
+most_steals = 0
+steals = ' '
+
+game_hash.each do | location, team_data |
+  team_data[:players].each do | player |
+    player_steals = player[:steals]
+steals, most_steals = player[:steals], player_steals if player_steals > most_steals
+end
+end
+steals
+# Correctly returns number of steals for Bismack
+return  true if player_with_longest_name = player_steals[:name]
+end
+
+
+# returns true if player with longest name also is player who steals the most
+# compares value of method longest_length to method that extracts player with most steals
+# conditional
+# boolean return
+#
