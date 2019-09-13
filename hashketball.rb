@@ -163,7 +163,7 @@ end
 end
 steals
 # Correctly returns number of steals for Bismack
-return  true if player_with_longest_name = player_steals[:name]
+return  true if player_most_steals == player_with_longest_name
 end
 
 
